@@ -46,7 +46,7 @@ public class DataReader {
                 number = userInputScanner.nextInt();
                 break;
             } catch (InputMismatchException nfe) {
-                System.out.println("Zadaná hodnota není číslo!");
+                System.err.println("Zadaná hodnota není číslo!");
                 userInputScanner.nextLine();
             }
         }
@@ -55,7 +55,12 @@ public class DataReader {
 
     private void readFromStandardInput(String count) {
         int intCount = Integer.parseInt(count);
-        inputNumbers = new int[intCount];
+        try {
+            inputNumbers = new int[intCount];
+        } catch (NegativeArraySizeException nase) {
+            System.err.println("Parametr musí být kladné celé číslo! Vy jste zadali: " + nase.getMessage());
+            GuiConsoleHelper.keepConsoleOpen();
+        }
 
         for (int i = 0; i < intCount; i++) {
             int number = readInput(i);
@@ -83,7 +88,7 @@ public class DataReader {
             String stringNumbers = DataWriter.readFile();
             parseNumbersFromString(stringNumbers);
         } else {
-            System.out.println("Neplatná cesta k souboru! " + filePath);
+            System.err.println("Neplatná cesta k souboru! " + filePath);
             GuiConsoleHelper.keepConsoleOpen();
         }
     }

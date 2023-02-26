@@ -48,9 +48,7 @@ public class DataWriter {
                 fileContent.append(line);
             }
         } catch (IOException ioe) {
-            final String message = "Načtení řádky ze vstupního souboru selhalo! " + ioe.getMessage();
-            System.err.println(message);
-            ioe.printStackTrace();
+            System.err.println("Načtení řádky ze vstupního souboru selhalo! " + ioe.getMessage());
         } finally {
             fileReader.close();
             bufferedReader.close();
@@ -74,7 +72,6 @@ public class DataWriter {
             GuiConsoleHelper.keepConsoleOpen();
         } catch (Exception e) {
             System.err.println("Do souboru se nepovedlo zapsat." + e.getMessage());
-            e.printStackTrace();
             GuiConsoleHelper.keepConsoleOpen();
         }
     }
