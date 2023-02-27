@@ -27,14 +27,13 @@ public class DataWriter {
     }
 
     protected static boolean isFilePath(String filePath) {
-
         if (filePath.contains(File.separator)) {
             file = new File(filePath);
         } else {
             String currentDirectory = System.getProperty("user.dir");
             file = new File(currentDirectory + File.separator + filePath);
         }
-        return file.canRead();
+        return file.exists();
     }
 
     protected static String readFile() throws IOException {

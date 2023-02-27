@@ -17,7 +17,6 @@ public class DataReader {
     private int[] inputNumbers;
 
     DataReader(DataHolder dataHolder) {
-
         this.dataHolder = dataHolder;
     }
 
@@ -45,7 +44,7 @@ public class DataReader {
                 System.out.printf("Zadejte %d. číslo: ", index+1);
                 number = userInputScanner.nextInt();
                 break;
-            } catch (InputMismatchException nfe) {
+            } catch (InputMismatchException ime) {
                 System.err.println("Zadaná hodnota není číslo!");
                 userInputScanner.nextLine();
             }
@@ -75,7 +74,7 @@ public class DataReader {
                     try {
                         Integer.parseInt(str);
                         return true;
-                    } catch (NumberFormatException nfe2) {
+                    } catch (NumberFormatException nfe) {
                         return false;
                     }
                 })
